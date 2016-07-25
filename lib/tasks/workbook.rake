@@ -1,18 +1,19 @@
 namespace :workbook do
   desc "Import Financial Data from CSV to Database"
-  task :add_row => [:environment] do
+  task :add_raw => [:environment] do
     require 'csv'
 
-
-    lines = File.new("lib/assets/updated_workbook.csv").readlines
-    stocks_hash =   Hash.new
-    keys = lines[0].split(',')
-    keys.each do |key|
-      stocks_hash[:key]
+    # lines = File.new("lib/assets/raw.csv").readlines
+    #
+    # keys = lines.shift.split(',')
+    #
+    # p keys
+    # p lines
+    csv_text = File.read('lib/assets/Updated_workbook.csv')
+    csv = CSV.parse(csv_text, :headers => true)
+    csv.each do |row|
+      Stock.create!(row.to_hash)
     end
-
-    p keys
-    p stocks_hash
-
   end
+
 end
