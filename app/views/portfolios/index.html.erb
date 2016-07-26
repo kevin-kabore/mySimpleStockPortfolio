@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Simple Stock Portfolio</title>
+  </head>
+  <body>
+    <h1>My Simple Stock Portfolio</h2>
+    <ul>
+        <% @portfolio.each do |portfolio_item| %>
+            <li>
+                Quantity: <%= portfolio_item.quantity %> - <%= portfolio_item.stock.code %> - <%= portfolio_item.stock.company_name %> - Last trade price: <%= portfolio_item.stock.last_trade_price %> - Purchase Price: <%= portfolio_item.purchase_price %> - <%= portfolio_item.stock.market_cap %> - EBITDA: <%= portfolio_item.stock.ebitda %> - EPS: <%= portfolio_item.stock.eps %> - PE: <%= portfolio_item.stock.pe %> - 50-day Moving Average: <%= portfolio_item.stock.ma_50 %>
+                <%= link_to "Sell", edit_portfolio_path(portfolio_item) %>
+                <%= link_to "Sell All", delete_portfolio_path(portfolio_item), method: :delete, data: { confirm: "Are you sure you want to sell these stocks?"} %>
+            </li>
+        <% end %>
+    </ul>
+
+    Portfolio Summary 
+    <div>Total Investment <%= @portfolio.each do |portfolio_item| %></div>
+  </body>
+</html>

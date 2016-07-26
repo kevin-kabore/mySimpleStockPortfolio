@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Buy Shares</title>
+  </head>
+  <body>
+    <h2><%=@stock.company_name%></h2>
+
+    <div> Last Trade Price: $ <%= @stock.last_trade_price %></div>
+    <div> Market Cap:  $ <%=  @stock.market_cap %> B </div>
+    <div> EBITDA:  $ <%= @stock.ebitda %> B </div>
+    <div> Earnings per Share: $ <%= @stock.eps %> </div>
+    <div> Price / Earnings: $ <%= @stock.pe %> </div>
+    <div> 50-day Moving Average $ <%= @stock.ma_50 %> </div>
+
+    <%= form_for @portfolio_item do |f| %>
+        <div>
+            <%= f.label :quantity %>
+            <%= f.text_field :quantity %>
+        </div>
+        <div>
+            <%= f.label :purchase_price %>
+            <%= f.text_field :purchase_price %>
+        </div>
+
+        <%= f.hidden_field(:stock_id, :value => @stock.id) %>
+        <%= f.submit "Add to Portfolio" %>
+
+    <% end %>
+
+  </body>
+</html>

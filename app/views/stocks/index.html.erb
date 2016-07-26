@@ -1,9 +1,19 @@
-<h1>Stocks</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Available Stocks</title>
+  </head>
+  <body>
+    <h1>Available Stocks</h1>
+    <ul>
+        <% @stocks.each do |stock| %>
+            <li>
+                <%= stock.code %> - <%= stock.company_name %> - <%= stock.last_trade_price %> - <%= stock.market_cap %> - <%= stock.ebitda %> - <%= stock.eps %> - <%= stock.pe %> - <%= stock.ma_50 %>
+                <%= link_to "Buy Stock", new_portfolio_path(:stock_id => stock.id)%>
+            </li>
+        <% end %>
 
-<ul>
-    <% @stocks.each do |stock| %>
-        <li>
-            <%= stock.code %> - <%= stock.company_name %> - <%= stock.last_trade_price %> - <%= stock.market_cap %> - <%= stock.ebitda %> - <%= stock.eps %> - <%= stock.pe %> - <%= stock.ma_50 %>
-        </li>
-    <% end %>
-</ul>
+    </ul>
+</body>
+</html>

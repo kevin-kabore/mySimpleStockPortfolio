@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+  </head>
+  <body>
+    <h2><%= @portfolio_item.stock.company_name%></h2>
+
+    <div> Last Trade Price: $ <%= @portfolio_item.stock.last_trade_price %> </div>
+    <div> Market Cap:  $ <%=  @portfolio_item.stock.market_cap %> B </div>
+    <div> EBITDA:  $ <%= @portfolio_item.stock.ebitda %> B </div>
+    <div> Earnings per Share: $ <%= @portfolio_item.stock.eps %> </div>
+    <div> Price / Earnings: $ <%= @portfolio_item.stock.pe %> </div>
+    <div> 50-day Moving Average: $ <%= @portfolio_item.stock.ma_50 %> </div>
+    <div> Purchase Price: $ <%=@portfolio_item.purchase_price  %> </div>
+    <div> Quantity Held: <%=@portfolio_item.quantity  %> </div>
+
+
+    <%= form_for @portfolio_item do |f| %>
+      <div>
+          <%= f.label :quantity, "How many would you like to sell" %>
+          <%= f.text_field :quantity %>
+      </div>
+      <%= f.submit "Sell these shares" %>
+    <% end %>
+
+</body>
+</html>
