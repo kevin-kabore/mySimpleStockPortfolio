@@ -9,12 +9,16 @@ class PortfoliosController < ApplicationController
   end
 
   def create
+    # @stock = Stock.find(params[:stock_id])
     @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:quantity, :purchase_price, :stock_id))
+
     @portfolio_item.user = current_user
 
     if @portfolio_item.save
       redirect_to portfolios_path
+      # p "worked"
     else
+      # p "didn't work"
       render :new
     end
   end

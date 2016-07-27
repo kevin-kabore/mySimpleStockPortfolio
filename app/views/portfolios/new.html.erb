@@ -5,9 +5,9 @@
     <title>Buy Shares</title>
   </head>
   <body>
-    <h2>Buy <%=@stock.company_name%></h2>
+    <h2 class="text-center">Buy <%=@stock.company_name%></h2>
     <p>Please enter number of shares and current purchase price</p>
-    <table>
+    <table class="table table-bordered">
       <th>Market Cap</th>
       <th>EBITDA</th>
       <th>Earnings/Share</th>
@@ -16,22 +16,22 @@
       <th>Last Trade Price</th>
       <th>Purchase Price:</th>
       <th>Quantity:</th>
-      <th></th>
+
 
       <tr>
-        <td>$ <%= @stock.market_cap %>B</td>
-        <td>$ <%= @stock.ebitda %>B</td>
-        <td>$ <%= @stock.eps%>B</td>
-        <td>$ <%= @stock.pe %></td>
-        <td>$ <%= @stock.ma_50 %></td>
-        <td>$ <%= @stock.last_trade_price %></td>
+        <td>$ <%= number_with_precision(@stock.market_cap, :precision => 2) %> B</td>
+        <td>$ <%= number_with_precision(@stock.ebitda, :precision => 2) %> B</td>
+        <td>$ <%= number_with_precision(@stock.eps, :precision => 2)%> B</td>
+        <td>$ <%= number_with_precision(@stock.pe, :precision =>2) %></td>
+        <td>$ <%= number_with_precision(@stock.ma_50, :precision => 2) %></td>
+        <td>$ <%= number_with_precision(@stock.last_trade_price, :precision =>2) %></td>
+
         <%= form_for @portfolio_item do |f| %>
           <td><%= f.text_field :purchase_price %></td>
           <td><%= f.text_field :quantity %></td>
 
-          <td><%= f.hidden_field(:stock_id, :value => @stock.id) %>
-            <%= f.submit "Add to Portfolio" %>
-          </td>
+          <%= f.hidden_field(:stock_id, :value => @stock.id) %>
+          <%= f.submit "Add to Portfolio" %>
           <% end %>
       </tr>
   </table>

@@ -5,8 +5,8 @@
     <title>Document</title>
   </head>
   <body>
-    <h2>Sell <%= @portfolio_item.stock.company_name%></h2>
-    <table>
+    <h2 class="text-center">Sell <%= @portfolio_item.stock.company_name%> Shares</h2>
+    <table class="table table-bordered">
       <th>Shares Held</th>
       <th>Last Trade Price</th>
       <th>Market Cap</th>
@@ -31,10 +31,10 @@
     </table>
 
     <%= form_for @portfolio_item do |f| %>
-      <div>
+      <div class="text-center">
           <%= f.label :quantity, "How many shares would you like to sell?" %>
           <%= f.text_field :quantity %>
-          <%= f.submit "Sell these shares" %>
+          <div class=btn><%= f.submit "Sell these shares" %></div>
       </div>
 
     <% end %>
