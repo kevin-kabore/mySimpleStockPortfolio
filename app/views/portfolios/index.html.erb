@@ -6,17 +6,73 @@
   </head>
   <body>
     <h1>My Simple Stock Portfolio</h2>
-    <ul>
+    <table>
+      <th>Shares Owned</th>
+      <th>Ticker Symbol</th>
+      <th>Company Name</th>
+      <th>Purchase Price</th>
+      <th>Last Trade Price</th>
+      <th>Market Cap</th>
+      <th>EBITDA</th>
+      <th>Earnings/Share</th>
+      <th>Price/Earnings</th>
+      <th>50-day MA</th>
+      <th>Position</th>
+      <th></th>
+      <th></th>
         <% @portfolio.each do |portfolio_item| %>
-            <li>
-                Quantity: <%= portfolio_item.quantity %> - <%= portfolio_item.stock.code %> - <%= portfolio_item.stock.company_name %> - Last trade price: <%= portfolio_item.stock.last_trade_price %> - Purchase Price: <%= portfolio_item.purchase_price %> - <%= portfolio_item.stock.market_cap %> - EBITDA: <%= portfolio_item.stock.ebitda %> - EPS: <%= portfolio_item.stock.eps %> - PE: <%= portfolio_item.stock.pe %> - 50-day Moving Average: <%= portfolio_item.stock.ma_50 %>
-                <%= link_to "Sell", edit_portfolio_path(portfolio_item) %>
-                <%= link_to "Sell All", delete_portfolio_path(portfolio_item), method: :delete, data: { confirm: "Are you sure you want to sell these stocks?"} %>
-            </li>
+            <tr>
+              <td><%= portfolio_item.quantity %></td>
+              <td><%= portfolio_item.stock.code %></td>
+              <td><%= portfolio_item.stock.company_name %></td>
+              <td>$ <%= number_with_precision(portfolio_item.purchase_price, :precision => 2) %></td>
+              <td>$ <%= number_with_precision(portfolio_item.stock.last_trade_price, :precision =>2) %></td>
+              <td>$ <%= number_with_precision(portfolio_item.stock.market_cap, :precision => 2) %>B</td>
+              <td>$ <%= number_with_precision(portfolio_item.stock.ebitda, :precision => 2) %>B</td>
+              <td>$ <%= number_with_precision(portfolio_item.stock.eps, :precision => 2) %></td>
+              <td>$ <%= number_with_precision(portfolio_item.stock.pe, :precision => 2) %></td>
+              <td>$ <%= number_with_precision(portfolio_item.stock.ma_50, :precision => 2) %></td>
+              <% @position = portfolio_item.quantity.to_i * portfolio_item.purchase_price.to_f %>
+              <td>$ <%= number_with_precision(@position, :precision => 2) %></td>                <td><%= link_to "Sell", edit_portfolio_path(portfolio_item) %></td>
+              <td><%= link_to "Sell All", delete_portfolio_path(portfolio_item), method: :delete, data: { confirm: "Are you sure you want to sell these stocks?"} %></td>
+            </tr>
         <% end %>
-    </ul>
+    </table>
 
-    Portfolio Summary 
-    <div>Total Investment <%= @portfolio.each do |portfolio_item| %></div>
+    <h2> Portfolio Summary </h2>
+    <table>
+      <th>Total Position</th>
+      <th>Average EPS</th>
+      <th>Average PE ratio</th>
+
+        <% @portfolio_position = 0 %>
+
+        <% @counter = 0 %>
+        <% @total_EPS = 0 %>
+
+        <% @total_PE_ratio = 0 %>
+        <% @portfolio.each do |portfolio_item| %>
+
+          <!-- Calculates total position  -->
+          <% @stock_position = portfolio_item.quantity.to_i * portfolio_item.purchase_price.to_f %>
+          <% @portfolio_position += @stock_position %>
+
+          <!-- Calculates avg. EPS -->
+          <% @total_EPS = @total_EPS + portfolio_item.stock.eps.to_f %>
+          <% @counter += 1 %>
+          <% @avg_EPS = @total_EPS / @counter %>
+
+          <!-- Calculates aveg PE ratio -->
+          <% @total_PE_ratio = @total_PE_ratio + portfolio_item.stock.pe.to_f %>
+          <% @avg_PE_ratio = @total_PE_ratio / @counter %>
+        <% end %>
+          <tr>
+            <td>$ <%= number_with_precision(@portfolio_position , :precision => 2)%></td>
+            <td>$ <%= number_with_precision(@avg_EPS, :precision => 2) %></td>
+            <td>$ <%= number_with_precision(@avg_PE_ratio, :precision => 2) %></td>
+          </tr>
+
+    </table>
+
   </body>
 </html>

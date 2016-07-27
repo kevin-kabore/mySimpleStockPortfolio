@@ -5,24 +5,38 @@
     <title>Document</title>
   </head>
   <body>
-    <h2><%= @portfolio_item.stock.company_name%></h2>
+    <h2>Sell <%= @portfolio_item.stock.company_name%></h2>
+    <table>
+      <th>Shares Held</th>
+      <th>Last Trade Price</th>
+      <th>Market Cap</th>
+      <th>EBITDA</th>
+      <th>Earnings/Share</th>
+      <th>Price/Earnings</th>
+      <th>50-day Moving Average</th>
+      <th>Purchase Price</th>
 
-    <div> Last Trade Price: $ <%= @portfolio_item.stock.last_trade_price %> </div>
-    <div> Market Cap:  $ <%=  @portfolio_item.stock.market_cap %> B </div>
-    <div> EBITDA:  $ <%= @portfolio_item.stock.ebitda %> B </div>
-    <div> Earnings per Share: $ <%= @portfolio_item.stock.eps %> </div>
-    <div> Price / Earnings: $ <%= @portfolio_item.stock.pe %> </div>
-    <div> 50-day Moving Average: $ <%= @portfolio_item.stock.ma_50 %> </div>
-    <div> Purchase Price: $ <%=@portfolio_item.purchase_price  %> </div>
-    <div> Quantity Held: <%=@portfolio_item.quantity  %> </div>
 
+      <tr>
+        <td>  <%= @portfolio_item.quantity  %></td>
+        <td>$ <%= @portfolio_item.stock.last_trade_price %></td>
+        <td>$ <%= @portfolio_item.stock.market_cap %>B</td>
+        <td>$ <%= @portfolio_item.stock.ebitda %>B</td>
+        <td>$ <%= @portfolio_item.stock.eps %></td>
+        <td>$ <%= @portfolio_item.stock.pe %></td>
+        <td>$ <%= @portfolio_item.stock.ma_50 %></td>
+        <td>$ <%= @portfolio_item.purchase_price  %></td>
+      </tr>
+
+    </table>
 
     <%= form_for @portfolio_item do |f| %>
       <div>
-          <%= f.label :quantity, "How many would you like to sell" %>
+          <%= f.label :quantity, "How many shares would you like to sell?" %>
           <%= f.text_field :quantity %>
+          <%= f.submit "Sell these shares" %>
       </div>
-      <%= f.submit "Sell these shares" %>
+
     <% end %>
 
 </body>

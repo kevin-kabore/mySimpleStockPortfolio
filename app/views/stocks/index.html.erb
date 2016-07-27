@@ -6,14 +6,29 @@
   </head>
   <body>
     <h1>Available Stocks</h1>
-    <ul>
+    <table>
+        <th>Ticker</th>
+        <th>Company Name</th>
+        <th>Last Trade Price</th>
+        <th>Market Cap</th>
+        <th>EBITDA</th>
+        <th>EPS</th>
+        <th>Price/Earnings</th>
+        <th>50-day Moving Avg.</th>
+        <th></th>
         <% @stocks.each do |stock| %>
-            <li>
-                <%= stock.code %> - <%= stock.company_name %> - <%= stock.last_trade_price %> - <%= stock.market_cap %> - <%= stock.ebitda %> - <%= stock.eps %> - <%= stock.pe %> - <%= stock.ma_50 %>
-                <%= link_to "Buy Stock", new_portfolio_path(:stock_id => stock.id)%>
-            </li>
+            <tr>
+                <td><%= stock.code %></td>
+                <td><%= stock.company_name %></td>
+                <td>$<%= number_with_precision(stock.last_trade_price, :precision => 2) %></td>
+                <td>$<%= number_with_precision(stock.market_cap, :precision => 2) %>B</td>
+                <td>$<%= number_with_precision(stock.ebitda, :precision => 2) %>B</td>
+                <td>$<%= number_with_precision(stock.eps, :precision => 2) %></td>
+                <td>$<%= number_with_precision(stock.pe, :precision => 2) %></td>
+                <td>$<%= number_with_precision(stock.ma_50, :precision => 2) %></td>
+                <td><%= link_to "Buy Shares", new_portfolio_path(:stock_id => stock.id)%></td>
+            </tr>
         <% end %>
-
-    </ul>
+    </table>
 </body>
 </html>

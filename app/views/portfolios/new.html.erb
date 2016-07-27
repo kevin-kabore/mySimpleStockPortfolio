@@ -5,29 +5,38 @@
     <title>Buy Shares</title>
   </head>
   <body>
-    <h2><%=@stock.company_name%></h2>
+    <h2>Buy <%=@stock.company_name%></h2>
+    <p>Please enter number of shares and current purchase price</p>
+    <table>
+      <th>Market Cap</th>
+      <th>EBITDA</th>
+      <th>Earnings/Share</th>
+      <th>Price/Earnings</th>
+      <th>50-day Moving Average</th>
+      <th>Last Trade Price</th>
+      <th>Purchase Price:</th>
+      <th>Quantity:</th>
+      <th></th>
 
-    <div> Last Trade Price: $ <%= @stock.last_trade_price %></div>
-    <div> Market Cap:  $ <%=  @stock.market_cap %> B </div>
-    <div> EBITDA:  $ <%= @stock.ebitda %> B </div>
-    <div> Earnings per Share: $ <%= @stock.eps %> </div>
-    <div> Price / Earnings: $ <%= @stock.pe %> </div>
-    <div> 50-day Moving Average $ <%= @stock.ma_50 %> </div>
+      <tr>
+        <td>$ <%= @stock.market_cap %>B</td>
+        <td>$ <%= @stock.ebitda %>B</td>
+        <td>$ <%= @stock.eps%>B</td>
+        <td>$ <%= @stock.pe %></td>
+        <td>$ <%= @stock.ma_50 %></td>
+        <td>$ <%= @stock.last_trade_price %></td>
+        <%= form_for @portfolio_item do |f| %>
+          <td><%= f.text_field :purchase_price %></td>
+          <td><%= f.text_field :quantity %></td>
 
-    <%= form_for @portfolio_item do |f| %>
-        <div>
-            <%= f.label :quantity %>
-            <%= f.text_field :quantity %>
-        </div>
-        <div>
-            <%= f.label :purchase_price %>
-            <%= f.text_field :purchase_price %>
-        </div>
+          <td><%= f.hidden_field(:stock_id, :value => @stock.id) %>
+            <%= f.submit "Add to Portfolio" %>
+          </td>
+          <% end %>
+      </tr>
+  </table>
 
-        <%= f.hidden_field(:stock_id, :value => @stock.id) %>
-        <%= f.submit "Add to Portfolio" %>
 
-    <% end %>
 
   </body>
 </html>

@@ -35,7 +35,8 @@ class PortfoliosController < ApplicationController
         render :edit
       end
     elsif @quantity_sold == @portfolio_item.quantity
-      destroy
+      @portfolio_item.destroy
+      redirect_to portfolios_path
     else
       flash[:notice] = "You cannot sell more than you own."
       render :edit
