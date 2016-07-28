@@ -17,17 +17,12 @@
         <ul >
           <li type="button" class="btn btn-default navbar-btn"><%= link_to "Available Stocks", stocks_path, :class => 'navbar-link' %></li>
           <li type="button" class="btn btn-default navbar-btn"><%= link_to "My Portfolio", portfolios_path, :class => 'navbar-link' %></li>
-
-            <% if user_signed_in? %>
-              <li type="button" class="btn btn-default navbar-btn pull-right">  <%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
-              <li type="button" class="btn btn-default navbar-btn pull-right">  <%= link_to 'Edit profile', edit_user_registration_path %> </li>
-              <li class="pull-right btn navbar-btn">Logged in as <strong><%= current_user.email %></strong></li>
-              <% end %>
+          <li type="button" class="btn btn-default navbar-btn pull-right">  <%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
+          <li type="button" class="btn btn-default navbar-btn pull-right">  <%= link_to 'Edit profile', edit_user_registration_path %> </li>
+          <li class="pull-right btn navbar-btn">Logged in as <strong><%= current_user.email %></strong></li>
       <% else %>
-              <li type="button" class="btn btn-default navbar-btn pull-right"> <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-              <li type="button" class="btn btn-default navbar-btn pull-right">  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-
-
+        <li type="button" class="btn btn-default navbar-btn pull-right"> <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <li type="button" class="btn btn-default navbar-btn pull-right">  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
         </ul>
       </nav>
 
