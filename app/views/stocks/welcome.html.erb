@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <title>Landing Page</title>
   </head>
-  <body>
+  <body class="row">
     <h1 class="text-center"  >2K's Simple Stock Portfolio</h1>
+     <hr>
+    <div class="col-md-8 text-center">
+      <div class="thumbnail col-md-offset-2">
 
     <h3>About this application</h3>
-    <p>My Simple Portfolio is an application I built from scratch as my second project
+    <p>2K's Simple Stock Portfolio is an application built from scratch as my second project
        in General Assembly's Web Development Immersive course in Santa Monica, CA.</p>
 
-    <p>The application is a simplified simulation stock portfolio building tool where users can build their portfolios by buying available stocks and adding them to their portfolios. Users can also sell some or all of any given stock. Users may buy and sell different stocks, and any given quantity of those stocks. Every user is provided personalized information about the entire portfolio and its performance. Those metrics are calculated and displayed at the bottom of each user's portfolio.</p>
-
-    <p>The application is built from scratch using Ruby on Rails. All stock information is pulled in from Yahoo! Finance and imported to the application through a .csv file. Enjoy!</p>
-
-
+    <p>The application is a simplified simulation stock portfolio building tool where users can build their portfolios by buying available stocks and adding them to their portfolios. Users can also sell some or all of any given stock. Users may buy and sell different stocks, and any given quantity of those stocks. Every user is provided personalized information about the entire portfolio and its performance. Those metrics are calculated and displayed at the bottom of each user's portfolio. The application is built from scratch using Ruby on Rails. All stock information is pulled in from Yahoo! Finance and imported to the application through a .csv file.</p>
+    <p>ALL SALES ARE FINAL. Enjoy!</p>
+    <br>
+    <br>
+  </div>
+</div>
+  <div class="col-md-4 text-center">
+    <div class="col-md-6 col-md-offset-3 thumbnail">
+  <%= render "devise/registrations/new" %>
+  </div>
+  </div>
   </body>
 </html>

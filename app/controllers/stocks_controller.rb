@@ -5,6 +5,9 @@ class StocksController < ApplicationController
     end
   end
   def index
+    if !current_user
+      redirect_to root_path
+    end
     @stocks = Stock.all
   end
 
