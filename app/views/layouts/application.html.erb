@@ -21,7 +21,7 @@
           <li type="button" class="btn btn-default navbar-btn pull-right">  <%= link_to 'Edit profile', edit_user_registration_path %> </li>
           <li class="pull-right btn navbar-btn">Logged in as <strong><%= current_user.email %></strong></li>
       <% else %>
-        <li type="button" class="btn btn-default navbar-btn pull-right"> <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <li type="button" class="btn btn-default navbar-btn pull-right"> <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  <%></%>
         <li type="button" class="btn btn-default navbar-btn pull-right">  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
         </ul>
       </nav>
