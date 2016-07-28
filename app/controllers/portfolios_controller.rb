@@ -31,16 +31,26 @@ class PortfoliosController < ApplicationController
     @portfolio_item = Portfolio.find(params[:id])
     @quantity_sold = params[:portfolio][:quantity].to_i
 
+
     if @quantity_sold < @portfolio_item.quantity
+
+      @profits = @quantity_sold * (params[:portfolio][:selling_price].to_f - @portfolio_item.purchase_price)
+      @portfolio_item.profit += @profits
       @portfolio_item.quantity -= @quantity_sold
+
       if @portfolio_item.save
         redirect_to portfolios_path
       else
         render :edit
       end
     elsif @quantity_sold == @portfolio_item.quantity
-      @portfolio_item.destroy
-      redirect_to portfolios_path
+      @profits = @quantity_sold * (params[:portfolio][:selling_price].to_f - @portfolio_item.purchase_price)
+      @portfolio_item.profit += @profits
+      @portfolio_item.quantity -= @quantity_sold
+
+      if @portfolio_item.save
+        redirect_to portfolios_path
+      end
     else
       flash[:notice] = "You cannot sell more than you own."
       render :edit
