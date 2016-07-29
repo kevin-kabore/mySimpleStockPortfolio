@@ -25,6 +25,4 @@ Next steps include making my Stock Data from yahoo finance dynamically update by
 [Breakout Wireframe](assets/IMG_3307.JPG)
 
 ##### ERD
-[Breakout ERD-I](assets/IMG_3308.JPG)
-[Breakout ERD-II](assets/IMG_3309.JPG)
-[Breakout ERD-II](assets/IMG_3313.JPG)
+[Breakout ERD](assets/IMG_3313.JPG)
