@@ -81,7 +81,7 @@
           <% @total_PE_ratio = @total_PE_ratio + portfolio_item.stock.pe.to_f %>
           <% @avg_PE_ratio = @total_PE_ratio / @counter %>
 
-          <% @total_return += portfolio_item.profit %>
+          <% @total_return += portfolio_item.profit  %>
         <% end %>
           <tr>
             <td>$ <%= number_with_precision(@portfolio_position , :precision => 2)%></td>
