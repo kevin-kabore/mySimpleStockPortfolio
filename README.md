@@ -7,7 +7,7 @@ The application is simulation stock portfolio building tool where users can buil
 
 Those metrics are calculated with values from the database as well as values entered by the user. They are displayed at the bottom of each user's portfolio. The application is built with Ruby on Rails. All stock information is pulled in from Yahoo! Finance using Excel and VBA and raked to the database through a .csv file.
 
-[The app can be found here.](https://my-simple-stock-portfolio.herokuapp.com/) You may also clone the repo, download it, run your server and go to localhost:3000 to view it locally.
+[The app can be found here.](https://my-simple-stock-portfolio.herokuapp.com/), but you may also clone the repo, download it, run your server and go to localhost:3000 to view it locally.
 
 Next steps include making my Stock Data from yahoo finance dynamically update by finding a more effective way of pulling and seeding the database. To build off of that, I will make the application automatically track buying and selling prices and add more metrics for the portfolio.
 
