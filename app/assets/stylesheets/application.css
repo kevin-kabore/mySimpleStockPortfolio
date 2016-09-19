@@ -18,7 +18,7 @@ li{
 }
 
 body {
-  background-image: url("BULL.jpg");
+  background-image: url("app/assets/images/BULL.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
