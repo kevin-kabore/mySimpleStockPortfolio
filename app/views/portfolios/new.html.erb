@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Buy Shares</title>
   </head>
-  <body>
+  <body class="background">
     <h2 class="text-center">Buy <%=@stock.company_name%></h2>
 
     <table class="table table-bordered">
@@ -23,7 +23,7 @@
         <td>$ <%= number_with_precision(@stock.ma_50, :precision => 2) %></td>
         <td>$ <%= number_with_precision(@stock.last_trade_price, :precision =>2) %></td>
       </tr>
-  </table>
+    </table>
 
     <%= form_for @portfolio_item do |f| %>
       <div class=text-center>

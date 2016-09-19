@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>My '2K' Stock Portfolio</title>
   </head>
-  <body class="container-fluid">
+  <body class="background" class="container-fluid">
     <br>
     <hr>
     <br>
@@ -83,7 +83,7 @@
 
           <% @total_return += portfolio_item.profit  %>
         <% end %>
-        
+
           <tr>
             <td>$ <%= number_with_precision(@portfolio_position , :precision => 2)%></td>
             <td>$ <%= number_with_precision(@avg_EPS, :precision => 2) %></td>

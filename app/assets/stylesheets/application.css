@@ -17,8 +17,8 @@ li{
   list-style: none;
 }
 
-body {
-  background-image: url("../../assets/bullvsbear.jpg");
+#background {
+  background-image: url("../../../assets/bullvsbear.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
